@@ -22,10 +22,10 @@ Abstract: The interactions between population growth, urban morphology, and wate
 7. Urban growth model projections 
 
 ### Output Data 
-8. MSD Live Ferencz and Capone (2024)
+8. MSD Live Ferencz demand projections (2024)
 
 ## Code Reference 
-9. MSD Live Ferencz and Capone data processing and projections (2024) 
+9. MSD Live Ferencz and Capone data processing and demand projections (2024) 
 
 ## Contributing Modeling Software 
 Standard Python Packages, geopandas, rasterio, ....
@@ -34,6 +34,15 @@ Standard Python Packages, geopandas, rasterio, ....
 
 ## Reproduce my Experiment 
 
+**1a**. Process the NLCD Historical Data:
+- Download NLCD for study region from MLRC. **Input Data [1]**
+- Use NLCD_processing.py to derive the urban landcover attributes for each provider boundary defined by **Input Data[5]**
+- Output is `______.csv` located in **Output Data [8]**
 
+**1b**. Process Population Projection Data:
+- Download 1 km^2^ population projections from **Input Data [6]**
+- Clip CA data to study region using QGIS
+- Downscale to 30 m^2^ using _____ QGIS function. Save downscaled rasters as `.tif` files. These are in **Output Data [8]** with the format `LA_SSPX_urban_YYYY.tif`, where X = "3" or "5" and YYYY = year (e.g. 2100). 
 
-
+**1c** . Process urban landcover projections:
+- 
