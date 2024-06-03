@@ -1,41 +1,39 @@
-[![DOI](https://zenodo.org/badge/265254045.svg)](https://zenodo.org/doi/10.5281/zenodo.10442485)
+<!--- [![DOI](https://zenodo.org/badge/265254045.svg)](https://zenodo.org/doi/10.5281/zenodo.10442485) --->
 
-# metarepo
-Template repository for a single point of access meta-repository to reproduce an experiment
+# ferencz_et_al_2024_ERL
 
-## Purpose
-A meta-repository creates a single point of access for someone to find all of the components that were used to create a published work for the purpose of reproducibility.  This repository should contain references to all minted data and software as well as house any ancillary code used to transform the source data, create figures for your publication, conduct the experiment, and / or execute the contributing software.
+## Urban morphology and urban water demand evolution: A case study in the land constrained Los Angeles region 
+Stephen B. Ferencz <sup>1</sup>, Jim Yoon <sup>1</sup>, Johanna Capone <sup>2</sup>, Ryan McManamay <sup>3</sup> 
+1. Pacific Northwest National Laboratory, Richland, WA, USA
+2. Virginia Tech, Blacksburg, VA
+3. Baylor University, Waco, TX
 
-## Using the template
-Simply click `Use this template` on the main repository page (shows up to the left of `Clone or download`) and fill in your `Repository name`, the `Description`, select whether you want the repository to be `Public` or `Private`, and leave `Include all branches` unchecked.
+Abstract: The interactions between population growth, urban morphology, and water demand have important implications for water resources and supply in urban regions. Outdoor water use for irrigation comprises a significant fraction of urban water demand, which is potentially influenced by long-term changes in urban morphology. To investigate this, we used spatially explicit projections of urban land development intensity (fraction impervious area) generated from a 30-m resolution urban growth model for the Los Angeles region. Recent historical data on water use and high resolution landcover data were used to establish relationships between green area, urban development intensity, and outdoor water demand. These relationships were then used to project outdoor and total water demand in 2100 using the urban growth model outputs. We considered two different population scenarios informed by the Shared Socioeconomic Pathway (SSP) projections for the region (SSP3 and SSP5), and three scenarios of urban development intensification. We found that water demand growth in land constrained regions like Los Angeles significantly deviated from population growth, with lower water demand growth due to shrinking of green area. Our analysis is resolved for over 80 water providers in the region, from urban core to suburban fringe, and highlights diverse demand responses influenced by initial urban form and water demand attributes. Compared to previous studies, our work is unique in coherently linking high resolution SSP population scenarios, urban land cover evolution, and urban water demand projections, demonstrating the approach for the Los Angeles region – the largest population center in the western United States. 
 
-## Naming your meta-repository
-The following naming conventions should be used when naming your repository:  
-- Single author:  `lastname_year_journal`
-- Multi author:  `lastname-etal_year_journal`
-- Multiple publications in the same journal:  `lastname-etal_year-letter_journal` (e.g., `human-etal_2020-b_nature`)
+## Data Sources 
 
-## Customize your `.gitignore` file
-A general `.gitignore` for use with Python or R development is included.  However, you may wish to customize this to the needs of your project.  The `.gitignore` file lets Git know what to push to the remote repository and what needs to be ignored and stay local.
+### Input Data 
+1. NLCD Historical
+2. Hi res land cover
+3. Monthly water provider data
+4. Annual sectoral water provider data
+5. Water provider boundaries 
+6. Population projections
+7. Urban growth model projections 
 
-## Suggestions
-- Don't bog down your repository with a bunch of raw data.  Instead archive and mint a DOI for your data and provide the reference in this repository with instructions for use.
-- Create complete and tested documentation for how to use what is in this repository to reproduce your experiment.
+### Output Data 
+8. MSD Live Ferencz and Capone (2024)
 
-## Creating a minted release for your meta-repository
-It is important to version and release your meta-repository as well due to changes that may occur during the publication review process.  If you do not know how to conduct a release on GitHub when linked with Zenodo, please contact chris.vernon@pnnl.gov to get set up.  
+## Code Reference 
+9. MSD Live Ferencz and Capone data processing and projections (2024) 
 
-## The meta-repository markdown template
-A sample meta-repository template is provided in this repository in the file `metarepo_template.md`.  
+## Contributing Modeling Software 
+Standard Python Packages, geopandas, rasterio, ....
+ 
+## 
 
-To use it, do the following:
-1. Create the template repository as mentioned above in [Using the template](#using-the-template)
-2. Clone your new repository to you local machine
-3. Change directories into your new meta-repository directory you just cloned
-4. Run `git rm README.md` to delete this file (`README.md`) and commit it using `git commit -m 'remove instructions'`
-5. Rename `metarepo_template.md` as `README.md`
-6. Run `git add README.md` to stage the new file that will show up on load in your remote GitHub repository
-7. Run `git rm metarepo_template.md` to remove the original template
-8. Run `git commit -m 'set up new template as readme'` to set the changes
-9. Run `git push` to send the changes to your remote GitHub repository
-10. Modify the `README.md` file to represent your experiement and use the `add`, `commit`, `push` workflow to update your remote repository
+## Reproduce my Experiment 
+
+
+
+
