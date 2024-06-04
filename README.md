@@ -64,5 +64,19 @@ Standard Python Packages, geopandas, rasterio, ....
 **2**. Derive NLCD urban land classification -- landcover relationships for each water provider region:
 - Two Python scripts are used to process all of the clipped landcover data produced in **Step 1d**. These scripts are located in **Code Reference [9]**: `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_1` and `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_2`. The outputs are three sets of `.csv` files for each Batch. `landclass_area_providers.csv`, `landcover_area_providers.csv`, and `landcover_fraction_providers.csv`. The Batch 2 script combines the outputs into single `.csv` files.  
 
-**3** Generate future demand projections:
-- Python script `Future_demand_landcover_evolution.py`. Set SSP and zoning scenario in Lines `XX-XX` of script. Script will output indoor and outdoor demands for each provider and also landcover and irrigation depth estimates. Run for SSP5 low, SSP5 med, SSP5 hi, and SSP3 med for a total of 12 `csv` files. These outputs are used by the plotting scripts associated with Figures 4 through 7 of the paper. 
+**3**. Analyze pixel-level urban intensification and extensification  
+- Use Python script `_____.py`....
+- Visualize in QGIS....
+
+**4** Generate future demand projections:
+- Python script `Future_demand_landcover_evolution.py`. Set SSP and zoning scenario in Lines `XX-XX` of script. Script will output indoor and outdoor demands for each provider and also landcover and irrigation depth estimates. Run for SSP5 low, SSP5 med, SSP5 hi, and SSP3 med for a total of 12 `csv` files. These outputs are used by the plotting scripts associated with Figures 4 through 7 of the paper.
+
+## Reproduce my Figures 
+
+-Figure 1: 
+-Figure 2:
+-Figure 3: 
+-Figure 4:
+-Figure 5:
+-Figure 6:
+-Figure 7: 
