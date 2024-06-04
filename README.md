@@ -22,7 +22,7 @@ Abstract: The interactions between population growth, urban morphology, and wate
 7. **Urban growth model projections**. McManamay, R., & Vernon, C. (2023). High-resolution (30-m) urban land cover projections for Los Angeles California Urban Area: 2010 to 2100 under SSP5 (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/19088234 
 
 ### Output Data 
-8. MSD Live Ferencz demand projections (2024)
+8. MSD Live Ferencz and Capone data processing and demand projections (2024)
 
 ## Code Reference 
 9. MSD Live Ferencz and Capone data processing and demand projections (2024) 
