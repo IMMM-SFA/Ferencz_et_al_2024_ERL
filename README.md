@@ -69,7 +69,7 @@ Standard Python Packages, geopandas, rasterio, ....
 - Visualize in QGIS....
 
 **4** Generate future demand projections:
-- Python script `Future_demand_landcover_evolution.py`. Set SSP and zoning scenario in Lines `XX-XX` of script. Script will output indoor and outdoor demands for each provider and also landcover and irrigation depth estimates. Run for SSP5 low, SSP5 med, SSP5 hi, and SSP3 med for a total of 12 `csv` files. These outputs are used by the plotting scripts associated with Figures 4 through 7 of the paper.
+- Python script `Future_demand_landcover_evolution.py`. Set SSP (3 or 5) and zoning scenario (low, med, hi) in Lines `10-11` of script. Script will output indoor and outdoor demands for each provider and also landcover and irrigation depth estimates. Run for SSP5 low, SSP5 med, SSP5 hi, and SSP3 med for a total of 12 `csv` files. These outputs are used by the plotting scripts associated with Figures 4 through 7 of the paper.
 
 ## Reproduce my Figures 
 
