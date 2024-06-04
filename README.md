@@ -17,7 +17,7 @@ Abstract: The interactions between population growth, urban morphology, and wate
 2. **Hi res land cover**. Coleman, Red Willow (2020), “Southern California 60-cm Urban Land Cover Classification ”, Mendeley Data, V1, doi: 10.17632/zykyrtg36g.1
 3. **Monthly water provider data**. California State Water Resources Control Board. Water Conservation and Production Reports. https://www.waterboards.ca.gov/water_issues/programs/conservation_portal/conservation_reporting.html accessed 6/2/23
 4. **Annual sectoral water provider data**.  California State Water Resources Control Board. DWR Urban Water Use Objective Analyzer Tool. https://lab.data.ca.gov/dataset/dwr-urban-water-use-objective-analyzer-tool accessed 6/2/23
-5. **Water provider boundaries**.  
+5. **Water provider boundaries**. California State Water Resources Control Board. Service area boundaries of drinking water service providers, as verified by the Division of Drinking Water. https://gispublic.waterboards.ca.gov/portal/home/item.html?id=fbba842bf134497c9d611ad506ec48cc accessed 6/2/23
 6. **Population projections**. Zoraghein, H., & O'Neill, B. (2020). Data Supplement: U.S. state-level projections of the spatial distribution of population consistent with Shared Socioeconomic Pathways. (v0.1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.3756179
 7. **Urban growth model projections**. McManamay, R., & Vernon, C. (2023). High-resolution (30-m) urban land cover projections for Los Angeles California Urban Area: 2010 to 2100 under SSP5 (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/19088234 
 
