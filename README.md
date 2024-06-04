@@ -54,7 +54,7 @@ Standard Python Packages, geopandas, rasterio, ....
 
 **1d**. Generate landcover rasters for each urban land class (21, 22, 23, 24) within each water provider boundary:
 
-- Use the QGIS model builder function to process the hi-resolution landcover data **Input Data [2]**. Inputs are the NLCD recent historical land classification raster (**Input Data [1]**), the hi-resolution landcover raster from **Input Data [2]**, and the provider boundaries (**Input Data [5]**. Outputs are four `.tif` rasters for each water provider region (or sub-region), one for each NLCD urban land class. All of the clipped rasters are saved on MSD Live (**Code Reference [9]**). This processs is very time consuming so we provide the output rasters. The naming convention is `PROVIDER_NAME_LC##.tif` where ## denotes the NLCD land classification (21, 22, 23, 24).
+- Use the QGIS model builder function to process the hi-resolution landcover data **Input Data [2]**. Inputs are the NLCD recent historical land classification raster (**Input Data [1]**), the hi-resolution landcover raster from **Input Data [2]**, and the provider boundaries (**Input Data [5]**. Outputs are four `.tiff` rasters for each water provider region (or sub-region), one for each NLCD urban land class. All of the clipped rasters are saved on MSD Live (**Code Reference [9]**). This processs is very time consuming so we provide the output rasters. The naming convention is `PROVIDER_NAME_LC##.tiff` where ## denotes the NLCD land classification (21, 22, 23, 24).
 
 **1e** Calculate recent average monthly water demand for each water provider:
 - Download monthly water data by water provider for all of California (**Input Data [3]**).
@@ -65,7 +65,7 @@ Standard Python Packages, geopandas, rasterio, ....
 - Two Python scripts are used to process all of the clipped landcover data produced in **Step 1d**. These scripts are located in **Code Reference [9]**: `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_1` and `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_2`. The outputs are three sets of `.csv` files for each Batch. `landclass_area_providers.csv`, `landcover_area_providers.csv`, and `landcover_fraction_providers.csv`. The Batch 2 script combines the outputs into single `.csv` files.  
 
 **3**. Analyze pixel-level urban intensification and extensification  
-- Use Python script `_____.py`....
+- Use Python script `Urban_growth_change_mapping.py`. Inputs are initial and final urban morphology rasters. Outputs are 
 - Visualize in QGIS....
 
 **4** Generate future demand projections:
@@ -73,10 +73,10 @@ Standard Python Packages, geopandas, rasterio, ....
 
 ## Reproduce my Figures 
 
-- Figure 1. a
-- Figure 2. b 
-- Figure 3. 
-- Figure 4.
-- Figure 5.
-- Figure 6.
-- Figure 7. 
+- Figure 1. Subplots a, b, d, e, f made in QGIS using **Input Data [1][2][5]** and touched up using Inkscape. Subplut c plotted from `Figure_1.py`. 
+- Figure 2. Wire diagram made in Powerpoint. Subplots b and c `Figure_2.py`. Subplot d in QGIS using **Input Data [7]**.  
+- Figure 3. Output `tiff` files from **Step 3** visualized in QGIS. 
+- Figure 4. Outputs from **Step 4** and **Step 1c**. `Figure_4.py`. 
+- Figure 5. Outputs from **Step 4** and **Step 1c**. `Figure 5.py`.
+- Figure 6. Outputs from **Step 4**. `Figure_6.py`. 
+- Figure 7. Outputs from **Step 4**. `Figure_7.py`. 
