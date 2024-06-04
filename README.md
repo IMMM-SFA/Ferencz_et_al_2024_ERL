@@ -73,10 +73,10 @@ Standard Python Packages, geopandas, rasterio, ....
 
 ## Reproduce my Figures 
 
--Figure 1. d
--Figure 2. f 
--Figure 3. 
--Figure 4.
--Figure 5.
--Figure 6.
--Figure 7. 
+- Figure 1. a
+- Figure 2. b 
+- Figure 3. 
+- Figure 4.
+- Figure 5.
+- Figure 6.
+- Figure 7. 
