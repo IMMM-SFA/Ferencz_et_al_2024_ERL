@@ -35,14 +35,33 @@ Standard Python Packages, geopandas, rasterio, ....
 ## Reproduce my Experiment 
 
 **1a**. Process the NLCD Historical Data:
-- Download NLCD for study region from MLRC. **Input Data [1]**
+
+- Download NLCD for study region from MLRC. **Input Data [1]**. This is `NLCD_2019_Land_Cover_L48_20210604_clNjCWtDUmB6F5woFH6g.tiff` in **Code Reference [9]**. 
 - Use NLCD_processing.py to derive the urban landcover attributes for each provider boundary defined by **Input Data[5]**
-- Output is `______.csv` located in **Output Data [8]**
+- Output is `NLCD_LC_areas_historic.csv` located in **Code Reference [9]**
 
 **1b**. Process Population Projection Data:
-- Download 1 km^2^ population projections from **Input Data [6]**
-- Clip CA data to study region using QGIS
-- Downscale to 30 m^2^ using _____ QGIS function. Save downscaled rasters as `.tif` files. These are in **Output Data [8]** with the format `LA_SSPX_urban_YYYY.tif`, where X = "3" or "5" and YYYY = year (e.g. 2100). 
 
-**1c** . Process urban landcover projections:
-- 
+- Download 1 km<sup>2</sup> population projections from **Input Data [6]**
+- Clip CA data to study region using QGIS. 
+- Downscale to 30 m<sup>2</sup> using QGIS built in function. Save downscaled rasters as `.tiff` files. These are in **Code Reference [9]** with the format `LA_SSPX_urban_YYYY.tiff`, where X = "3" or "5" and YYYY = year (e.g. 2100).
+- The Python script `Data_Processing_Urban_growth_projection_rasters.py` located in **Code Reference [9]** uses the downscaled population rasters and provider boundaries (**Input Data[5]**) to calculate the projected population within each water provider region. Output is two `.csv` files, one for each SSP scenario: `SSP3_Aggregated_landclass_projection_data.csv` and `SSP5_Aggregated_landclass_projection_data.csv`
+
+**1c**. Process urban landcover projections:
+
+- Download 30 m urban landcover projections from **Input Data [7]**.
+- Python script `Data_Processing_Urban_growth_projection_rasters.py` aggregates the urban land projections for each water provider. The script generates four `.csv` files for each SSP and zoning scenario ("low," "medium," "high"). These are located in **Code Reference [9]**. The Python script then aggregates the SSP-specific outputs into single `.csv` files with the names: `SSP3_Aggregated_landclass_projection_data.csv` and `SSP5_Aggregated_landclass_projection_data.csv'
+
+**1d**. Generate landcover rasters for each urban land class (21, 22, 23, 24) within each water provider boundary:
+
+- Use the QGIS model builder function to process the hi-resolution landcover data **Input Data [2]**. Inputs are the NLCD recent historical land classification raster (**Input Data [1]**), the hi-resolution landcover raster from **Input Data [2]**, and the provider boundaries (**Input Data [5]**. Outputs are four `.tif` rasters for each water provider region (or sub-region), one for each NLCD urban land class. All of the clipped rasters are saved on MSD Live (**Code Reference [9]**). This processs is very time consuming so we provide the output rasters. The naming convention is `PROVIDER_NAME_LC##.tif` where ## denotes the NLCD land classification (21, 22, 23, 24).
+
+**1e** Calculate recent average monthly water demand for each water provider:
+- Download monthly water data by water provider for all of California (**Input Data [3]**).
+- Filter out providers that are outside of the study area (done manually).
+- Python script `Demand_data_processing.py` converts monthly demand to common units (acre-feet, 1 acre-foot = 1,233 m<sup>3</sup> and then calculates average monthly demands for each water provider. The output is `Provider_historical_demands.csv`. 
+
+**2**. Derive NLCD urban land classification -- landcover relationships for each water provider region:
+- Two Python scripts are used to process all of the clipped landcover data produced in **Step 1d**. These scripts are located in **Code Reference [9]**: `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_1` and `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_2`. The outputs are three sets of `.csv` files for each Batch. `landclass_area_providers.csv`, `landcover_area_providers.csv`, and `landcover_fraction_providers.csv`. The Batch 2 script combines the outputs into single `.csv` files.  
+
+**3** 
