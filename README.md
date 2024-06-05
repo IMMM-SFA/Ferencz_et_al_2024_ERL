@@ -28,7 +28,7 @@ Abstract: The interactions between population growth, urban morphology, and wate
 9. MSD Live Ferencz and Capone data processing and demand projections (2024) 
 
 ## Contributing Modeling Software 
-Standard Python Packages, geopandas, rasterio, ....
+Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.io/en/stable/) and Geopandas modules (https://geopandas.org/en/stable/). 
  
 ## 
 
