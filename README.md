@@ -59,14 +59,13 @@ Standard Python Packages, geopandas, rasterio, ....
 **1e** Calculate recent average monthly water demand for each water provider:
 - Download monthly water data by water provider for all of California (**Input Data [3]**).
 - Filter out providers that are outside of the study area (done manually).
-- Python script `Demand_data_processing.py` converts monthly demand to common units (acre-feet, 1 acre-foot = 1,233 m<sup>3</sup> and then calculates average monthly demands for each water provider. The output is `Provider_historical_demands.csv`. 
+- Python script `Demand_data_processing.py` converts monthly demand to common units (acre-feet, 1 acre-foot = 1,233 m<sup>3</sup> and then calculates average monthly demands for each water provider. The output is `Provider_historical_demands.csv`. These outputs are used for Step 4 and Figure 1 of the paper. 
 
-**2**. Derive NLCD urban land classification -- landcover relationships for each water provider region:
-- Two Python scripts are used to process all of the clipped landcover data produced in **Step 1d**. These scripts are located in **Code Reference [9]**: `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_1` and `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_2`. The outputs are three sets of `.csv` files for each Batch. `landclass_area_providers.csv`, `landcover_area_providers.csv`, and `landcover_fraction_providers.csv`. The Batch 2 script combines the outputs into single `.csv` files.  
+**2**. Derive NLCD urban land classification -> land cover relationships for each water provider region:
+- Two Python scripts are used to process all of the clipped landcover data produced in **Step 1d**. These scripts are located in **Code Reference [9]**: `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_1` and `Data_Processing_Urban_LC_green_fraction_by_service_region_Batch_2`. The outputs are three sets of `.csv` files for each Batch. `landclass_area_providers.csv`, `landcover_area_providers.csv`, and `landcover_fraction_providers.csv`. The Batch 2 script combines the outputs into single `.csv` files. These outputs are used in Step 4 and for Figure 2 of the paper. 
 
 **3**. Analyze pixel-level urban intensification and extensification  
-- Use Python script `Urban_growth_change_mapping.py`. Inputs are initial and final urban morphology rasters. Outputs are 
-- Visualize in QGIS....
+- Use Python script `Urban_growth_change_mapping.py`. Inputs are initial and final urban morphology rasters. Set SSP and scenario to process on Lines `32-33`. Outputs are two `tiff` files. `Urban_intensification_SSP_scenario.tiff` shows which pixels had an increase in urban LC and the amount of the increase (1, 2, or 3 levels). `Urban_growth_SSP_scenario.tiff` shows pixels that were converted to urban land. SSP = (SSP3 or SSP5) and scenartio = "low", "med", or "hi" zoning. THese outputs are used for Figure 3 of the paper. 
 
 **4** Generate future demand projections:
 - Python script `Future_demand_landcover_evolution.py`. Set SSP (3 or 5) and zoning scenario (low, med, hi) in Lines `10-11` of script. Script will output indoor and outdoor demands for each provider and also landcover and irrigation depth estimates. Run for SSP5 low, SSP5 med, SSP5 hi, and SSP3 med for a total of 12 `csv` files. These outputs are used by the plotting scripts associated with Figures 4 through 7 of the paper.
