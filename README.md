@@ -72,8 +72,8 @@ Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.i
 
 ## Reproduce my Figures 
 
-- Figure 1. Subplots a, b, d, e, f made in QGIS using **Input Data [1][2][5]** and touched up using Inkscape. Subplut c plotted from `Figure_1.py`. 
-- Figure 2. Wire diagram made in Powerpoint. Subplots b and c `Figure_2.py`. Subplot d in QGIS using **Input Data [7]**.  
+- Figure 1. Subplots a, b, d, e, f made in QGIS using **Input Data [1][2][5]** and touched up using Inkscape. Subplot c plotted from `Figure_1.py`. 
+- Figure 2. Wire diagram made in Powerpoint. Subplots b and c `Figure_2.py`. Subplot d visualized in QGIS using **Input Data [7]**. 
 - Figure 3. Output `tiff` files from **Step 3** visualized in QGIS. 
 - Figure 4. Outputs from **Step 4** and **Step 1c**. `Figure_4.py`. 
 - Figure 5. Outputs from **Step 4** and **Step 1c**. `Figure 5.py`.
