@@ -42,7 +42,7 @@ Standard Python Packages, geopandas, rasterio, ....
 
 **1b**. Process Population Projection Data:
 
-- Download 1 km<sup>2</sup> population projections from **Input Data [6]**
+- Download 1 km<sup>2</sup> urban population projections for Californina from **Input Data [6]**
 - Clip CA data to study region using QGIS. 
 - Downscale to 30 m<sup>2</sup> using QGIS built in function. Save downscaled rasters as `.tiff` files. These are in **Code Reference [9]** with the format `LA_SSPX_urban_YYYY.tiff`, where X = "3" or "5" and YYYY = year (e.g. 2100).
 - The Python script `Data_Processing_Urban_growth_projection_rasters.py` located in **Code Reference [9]** uses the downscaled population rasters and provider boundaries (**Input Data[5]**) to calculate the projected population within each water provider region. Output is two `.csv` files, one for each SSP scenario: `SSP3_Aggregated_landclass_projection_data.csv` and `SSP5_Aggregated_landclass_projection_data.csv`
