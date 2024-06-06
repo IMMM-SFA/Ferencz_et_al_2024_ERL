@@ -22,7 +22,7 @@ Abstract: The interactions between population growth, urban morphology, and wate
 7. **Urban growth model projections**. McManamay, R., & Vernon, C. (2023). High-resolution (30-m) urban land cover projections for Los Angeles California Urban Area: 2010 to 2100 under SSP5 (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/19088234 
 
 ### Output Data 
-8. Ferencz, S., & Capone, J. (2024). LA Water Urban Morphology and SSP Population Change on Future Water Demand (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/2370544
+8. Ferencz, S., Capone, J., Yoon, J., & McManamay, R. (2024). Urban morphology and urban water demand evolution in the Los Angeles region (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/2370544
 
 ## Code Reference 
 9. Code for Executing the processing and analysis steps in "Reproduce my Experiment" provided in the `workflow` folder on this meta-repository. The scripts are named by their corresponding "Reproduce my Experiment" step. 
