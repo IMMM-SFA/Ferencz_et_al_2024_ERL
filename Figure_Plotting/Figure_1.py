@@ -5,7 +5,7 @@ import pandas as pd
 import os 
 import matplotlib.pyplot as plt
 
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Step_4") # Path to Step 4 Folder 
+os.chdir() # Path to Step 4 Folder or Figure 1 Folder
 
 historic_demand = pd.read_csv("Historical_use_master.csv", index_col = 0)
 
