@@ -12,9 +12,9 @@ SSP = "SSP5" # SSP3 or SSP5
 scenario = 'med'
 
 # Import urban growth projection for specific SSP scenario - Step 1c
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Step_1c/" + SSP)
+os.chdir(Path to Step 1c Folder + SSP) # insert path to Step 1c folder, plus SSP name to navigate to the correct subfolder 
 
-LU_df = pd.read_csv(SSP+ "_Aggregated_landclass_projection_data.csv", index_col = 0)
+LU_df = pd.read_csv(SSP + "_Aggregated_landclass_projection_data.csv", index_col = 0)
 
 for i in range(len(LU_df.iloc[:,0])):
     if LU_df.Provider_ID[i][0:7] == 'IOU_PWC':
@@ -25,7 +25,7 @@ for i in range(len(LU_df.iloc[:,0])):
         continue 
 
 # Import 2019 NLCD data - Step 1a 
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Step_1a")
+os.chdir(Path to Step_1a Folder)
 NLCD_historic = pd.read_csv("NLCD_LC_areas_historic.csv")
 
 #%% Land class areas for all LA or optionally a single water provider. 
