@@ -25,7 +25,7 @@ Abstract: The interactions between population growth, urban morphology, and wate
 8. Ferencz, S., & Capone, J. (2024). LA Water Urban Morphology and SSP Population Change on Future Water Demand (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/2370544
 
 ## Code Reference 
-9. Code for Executing the processing and analysis steps in "Reproduce my Experiment" provided in the `workflow` folder on this meta-repository. 
+9. Code for Executing the processing and analysis steps in "Reproduce my Experiment" provided in the `workflow` folder on this meta-repository. The scripts are named by their corresponding "Reproduce my Experiment" step. 
 
 ## Contributing Modeling Software 
 Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.io/en/stable/) and Geopandas modules (https://geopandas.org/en/stable/). 
