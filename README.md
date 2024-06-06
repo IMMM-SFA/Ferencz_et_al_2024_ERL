@@ -75,7 +75,7 @@ Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.i
 - Figure 1. Subplots a, b, d, e, f made in QGIS using **Input Data [1][2][5]** and touched up using Inkscape. Subplot c plotted from `Figure_1.py`. 
 - Figure 2. Wire diagram made in Powerpoint. Subplots b and c `Figure_2.py`. Subplot d visualized in QGIS using **Input Data [7]**. 
 - Figure 3. Output `tiff` files from **Step 3** visualized in QGIS. 
-- Figure 4. Outputs from **Step 4** and **Step 1c**. `Figure_4.py`. 
-- Figure 5. Outputs from **Step 4** and **Step 1c**. `Figure 5.py`.
-- Figure 6. Outputs from **Step 4**. `Figure_6.py`. 
+- Figure 4. Outputs from **Step 4** and **Step 1c**. `Figure_4_and_5_urban_LC_areas.py` & Figure_4_and_5_water_demand_plotting.py`. Bar plot outputs formatted in Powerpoint. Outputs from the plotting scripts formatted in Powerpoint. 
+- Figure 5. Outputs from **Step 4** and **Step 1c**. `Figure_4_and_5_urban_LC_areas.py` & Figure_4_and_5_water_demand_plotting.py`. Bar plot outputs formatted in Powerpoint. Outputs from the plotting scripts formatted in Powerpoint.
+- Figure 6. Outputs from **Step 4**. `Figure_6.py`. Outputs from the plotting scripts formatted in Powerpoint.
 - Figure 7. Outputs from **Step 4**. `Figure_7.py`. 
