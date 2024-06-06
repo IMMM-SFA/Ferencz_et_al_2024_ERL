@@ -25,7 +25,7 @@ Abstract: The interactions between population growth, urban morphology, and wate
 8. Ferencz, S., & Capone, J. (2024). LA Water Urban Morphology and SSP Population Change on Future Water Demand (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/2370544
 
 ## Code Reference 
-9. Ferencz, S., & Capone, J. (2024). LA Water Urban Morphology and SSP Population Change on Future Water Demand (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/2370544
+9. Code for Executing the processing and analysis steps in "Reproduce my Experiment" provided in the `workflow` folder on this meta-repository. 
 
 ## Contributing Modeling Software 
 Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.io/en/stable/) and Geopandas modules (https://geopandas.org/en/stable/). 
@@ -36,25 +36,25 @@ Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.i
 
 **1a**. Process the NLCD Historical Data:
 
-- Download NLCD for study region from MLRC. **Input Data [1]**. This is `NLCD_2019_Land_Cover_L48_20210604_clNjCWtDUmB6F5woFH6g.tiff` in **Code Reference [9]**. 
+- Download NLCD for study region from MLRC. **Input Data [1]**. This is `NLCD_2019_Land_Cover_L48_20210604_clNjCWtDUmB6F5woFH6g.tiff` in **Output Data [8]**. 
 - Use NLCD_processing.py to derive the urban landcover attributes for each provider boundary defined by **Input Data[5]**
-- Output is `NLCD_LC_areas_historic.csv` located in **Code Reference [9]**
+- Output is `NLCD_LC_areas_historic.csv` located in **Output Data [8]**
 
 **1b**. Process Population Projection Data:
 
 - Download 1 km<sup>2</sup> urban population projections for Californina from **Input Data [6]**
 - Clip CA data to study region using QGIS. 
-- Downscale to 30 m<sup>2</sup> using QGIS built in function. Save downscaled rasters as `.tiff` files. These are in **Code Reference [9]** with the format `LA_SSPX_urban_YYYY.tiff`, where X = "3" or "5" and YYYY = year (e.g. 2100).
-- The Python script `Data_Processing_Urban_growth_projection_rasters.py` located in **Code Reference [9]** uses the downscaled population rasters and provider boundaries (**Input Data[5]**) to calculate the projected population within each water provider region. Output is two `.csv` files, one for each SSP scenario: `SSP3_Aggregated_landclass_projection_data.csv` and `SSP5_Aggregated_landclass_projection_data.csv`
+- Downscale to 30 m<sup>2</sup> using QGIS built in function. Save downscaled rasters as `.tiff` files. These are in **Output Data [8]** with the format `LA_SSPX_urban_YYYY.tiff`, where X = "3" or "5" and YYYY = year (e.g. 2100).
+- The Python script `Data_Processing_Urban_growth_projection_rasters.py` located in `workflow` uses the downscaled population rasters and provider boundaries (**Input Data[5]**) to calculate the projected population within each water provider region. Output is two `.csv` files, one for each SSP scenario: `SSP3_Aggregated_landclass_projection_data.csv` and `SSP5_Aggregated_landclass_projection_data.csv`
 
 **1c**. Process urban landcover projections:
 
 - Download 30 m urban landcover projections from **Input Data [7]**.
-- Python script `Data_Processing_Urban_growth_projection_rasters.py` aggregates the urban land projections for each water provider. The script generates four `.csv` files for each SSP and zoning scenario ("low," "medium," "high"). These are located in **Code Reference [9]**. The Python script then aggregates the SSP-specific outputs into single `.csv` files with the names: `SSP3_Aggregated_landclass_projection_data.csv` and `SSP5_Aggregated_landclass_projection_data.csv'
+- Python script `Data_Processing_Urban_growth_projection_rasters.py` aggregates the urban land projections for each water provider. The script generates four `.csv` files for each SSP and zoning scenario ("low," "medium," "high"). These are located in **Output Data [8]**. The Python script then aggregates the SSP-specific outputs into single `.csv` files with the names: `SSP3_Aggregated_landclass_projection_data.csv` and `SSP5_Aggregated_landclass_projection_data.csv'
 
 **1d**. Generate landcover rasters for each urban land class (21, 22, 23, 24) within each water provider boundary:
 
-- Use the QGIS model builder function `Urban_landclass_landcover_metrics.model3` to process the hi-resolution landcover data **Input Data [2]**. To access the model builder GUI open QGIS and navigate to Processing -> Model Designer -> Model -> Open Model. Inputs are the NLCD recent historical land classification raster (**Input Data [1]**), the hi-resolution landcover raster from **Input Data [2]**, and the provider boundaries (**Input Data [5]**. Outputs are four `.tiff` rasters for each water provider region (or sub-region), one for each NLCD urban land class. This processs is very time consuming so we provide the output rasters in the Folder "Clipped Provider High Res Landcover" (**Code Reference [9]**). The naming convention is `PROVIDER_NAME_LC##.tiff` where ## denotes the NLCD land classification (21, 22, 23, 24).
+- Use the QGIS model builder function `Urban_landclass_landcover_metrics.model3` to process the hi-resolution landcover data **Input Data [2]**. To access the model builder GUI open QGIS and navigate to Processing -> Model Designer -> Model -> Open Model. Inputs are the NLCD recent historical land classification raster (**Input Data [1]**), the hi-resolution landcover raster from **Input Data [2]**, and the provider boundaries (**Input Data [5]**. Outputs are four `.tiff` rasters for each water provider region (or sub-region), one for each NLCD urban land class. This processs is very time consuming so we provide the output rasters in the Folder "Clipped Provider High Res Landcover" (**Output Data [8]**). The naming convention is `PROVIDER_NAME_LC##.tiff` where ## denotes the NLCD land classification (21, 22, 23, 24).
 
 **1e** Calculate recent average monthly water demand for each water provider:
 - Download monthly water data by water provider for all of California (**Input Data [3]**).
@@ -62,7 +62,7 @@ Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.i
 - Python script `Demand_data_processing.py` converts monthly demand to common units (acre-feet, 1 acre-foot = 1,233 m<sup>3</sup> and then calculates average monthly demands for each water provider. The output is `Provider_historical_demands.csv`. These outputs are used for Step 4 and Figure 1 of the paper. 
 
 **2**. Derive NLCD urban land classification -> land cover relationships for each water provider region:
-- Python scripts processes all of the clipped landcover data produced in **Step 1d** located in **Code Reference [9]**: `Data_Processing_Urban_LC_green_fraction_by_service_region`. The outputs are three sets of `.csv` files: `landclass_area_providers.csv`, `landcover_area_providers.csv`, and `landcover_fraction_providers.csv`. These outputs are used in Step 4 and for Figure 2 of the paper. 
+- Python scripts processes all of the clipped landcover data produced in **Step 1d** located in `workflow`: `Data_Processing_Urban_LC_green_fraction_by_service_region`. The outputs are three sets of `.csv` files: `landclass_area_providers.csv`, `landcover_area_providers.csv`, and `landcover_fraction_providers.csv`. These outputs are used in Step 4 and for Figure 2 of the paper. 
 
 **3**. Analyze pixel-level urban intensification and extensification  
 - Use Python script `Urban_growth_change_mapping.py`. Inputs are initial and final urban morphology rasters. Set SSP and scenario to process on Lines `32-33`. Outputs are two `tiff` files. `Urban_intensification_SSP_scenario.tiff` shows which pixels had an increase in urban LC and the amount of the increase (1, 2, or 3 levels). `Urban_growth_SSP_scenario.tiff` shows pixels that were converted to urban land. SSP = (SSP3 or SSP5) and scenartio = "low", "med", or "hi" zoning. THese outputs are used for Figure 3 of the paper. 
