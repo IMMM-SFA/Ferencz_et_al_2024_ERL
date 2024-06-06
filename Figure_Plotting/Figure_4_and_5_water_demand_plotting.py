@@ -6,7 +6,7 @@ import os
 import matplotlib.pyplot as plt
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Paper_Figures/Figure_4_5_Monthly_and_Annual_Demands_in_2100")
+os.chdir(Path to Figure_4_5 Folder)
 
 # Historic use is from Step 1e and the version used for this is output from Step 4 
 Historic_use = pd.read_csv("Historical_use_2017_2021.csv")
