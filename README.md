@@ -13,7 +13,7 @@ Abstract: The interactions between population growth, urban morphology, and wate
 ## Data Sources 
 
 ### Input Data 
-1. **NLCD Historical**. Multi-Resolution Land Characteristics Consortium. https://www.mrlc.gov/viewer/. Accessed 10/2/23
+1. **NLCD historical urban land class data**. Multi-Resolution Land Characteristics Consortium. https://www.mrlc.gov/viewer/. Accessed 10/2/23
 2. **Hi res land cover**. Coleman, Red Willow (2020), “Southern California 60-cm Urban Land Cover Classification ”, Mendeley Data, V1, doi: 10.17632/zykyrtg36g.1
 3. **Monthly water provider data**. California State Water Resources Control Board. Water Conservation and Production Reports. https://www.waterboards.ca.gov/water_issues/programs/conservation_portal/conservation_reporting.html accessed 6/2/23
 4. **Annual sectoral water provider data**.  California State Water Resources Control Board. DWR Urban Water Use Objective Analyzer Tool. https://lab.data.ca.gov/dataset/dwr-urban-water-use-objective-analyzer-tool accessed 6/2/23
