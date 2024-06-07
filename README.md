@@ -25,7 +25,7 @@ Abstract: The interactions between population growth, urban morphology, and wate
 8. Ferencz, S., Capone, J., Yoon, J., & McManamay, R. (2024). Urban morphology and urban water demand evolution in the Los Angeles region (Version v1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/2370544
 
 ## Code Reference 
-9. Code for Executing the processing and analysis steps in "Reproduce my Experiment" provided in the `workflow` folder on this meta-repository. The scripts are named by their corresponding "Reproduce my Experiment" step. Ferencz, S., Yoon, J., Capone, J., & McManamay, R. (2024). Ferencz et al. 2024 ERL (Version V0). Zenodo. https://doi.org/10.5281/zenodo.11521848
+9. Code for Executing the processing and analysis steps in "Reproduce my Experiment" provided in the `workflow` folder on this meta-repository. The scripts are named by their corresponding "Reproduce my Experiment" step. Ferencz, S., Yoon, J., Capone, J., & McManamay, R. (2024). Ferencz et al. 2024 ERL (Version V0). Zenodo.  https://doi.org/10.5281/zenodo.11521848
 
 ## Contributing Modeling Software 
 Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.io/en/stable/) and Geopandas modules (https://geopandas.org/en/stable/). 
