@@ -126,7 +126,7 @@ monthly_demands_updated_max = pd.DataFrame(data = monthly_use_max.copy(), column
                       'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
 monthly_demands_updated_max['Provider'] = Providers
 
-#%% Time series from 2014 to 2022 for each provider 
+#%% Time series from 2014 to 2022 for each provider showing annual water use normalized by maximum annual water use 
 
 annual_arr = np.zeros((len(Providers),7)) 
 
@@ -255,91 +255,3 @@ for root_ID in root_IDs:
     
 demands.to_csv('Provider_historical_demands_min.csv') # modify file name for demand scenario (min or max specificed in line 197)
     
-    
-#%% Create DataFrame to compare recent annual average supply (2017-2021) to 
-# annual average supply used in Artes (2010) 
-annual_comparison = pd.DataFrame(data = None, columns = ['Provider', 'recent_avg',
-                            'artes_avg'])
-
-annual_comparison.Provider = Providers
-annual_comparison.recent_avg = annual_avg_arr
-
-for i in range(len(Providers)):
-    provider = annual_comparison.Provider[i] 
-    artes_copy = artes_annual_data.copy()
-    artes_copy = artes_copy.where(artes_copy.Ca_database_name[:] == provider)
-    artes_copy = artes_copy.dropna(thresh = 6)
-    annual_comparison.iloc[i,2] = artes_copy.iloc[0,5]
-
-np.sum(annual_comparison.artes_avg[:])
-np.sum(annual_comparison.recent_avg[:])
-    
-#%% Plotting 
-
-# Monthly use min, max, avg for a provider 
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-row = 16 
-axs.plot(np.arange(12)+1, monthly_use_arr[row,:]) 
-axs.plot(np.arange(12)+1, monthly_use_min[row,:]) 
-axs.plot(np.arange(12)+1, monthly_use_max[row,:])
-
-# % diff between max and min and the average annual use 
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4)) 
-axs.scatter(np.arange(75), (annual_max_arr[:] - annual_avg_arr[:])/annual_avg_arr[:]) 
-axs.scatter(np.arange(75), (annual_min_arr[:] - annual_avg_arr[:])/annual_avg_arr[:]) 
-
-# Boxplot of % increase and decrease for min and max compared to avg 
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(2, 4))
-plt.boxplot(100*(annual_min_arr[:] - annual_avg_arr[:])/annual_avg_arr[:])
-plt.boxplot(100*(annual_max_arr[:] - annual_avg_arr[:])/annual_avg_arr[:])
-plt.ylabel("% diff from average annual use")
-
-
-
-# Monthly use factors 
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-for row in range(practice_df.iloc[:,0].size):
-    axs.plot(np.arange(12)+1, monthly_use_arr[row,:]/annual_avg_arr[row]) #, label = 'Imports', color = 'blue')
-
-# Monthly use factors 
-row = 16
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-axs.plot(np.arange(12)+1,  monthly_use_arr[row,:]/annual_avg_arr[row]) 
-
-# Relative monthly useage
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-for row in range(practice_df.iloc[:,0].size):
-    axs.plot(np.arange(12)+1, monthly_use_arr[row,:]/min(monthly_use_arr[row,:])) 
-    
-# Relative monthly useage
-row = 16
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-axs.plot(np.arange(12)+1, monthly_use_arr[row,:]/min(monthly_use_arr[row,:])) 
-
-# Indoor use 
-total_indoor = 0 
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-for row in range(practice_df.iloc[:,0].size):
-    axs.scatter(1,min(monthly_use_arr[row,:])) #, label = 'Imports', color = 'blue')
-    total_indoor += np.sum(12*min(monthly_use_arr[row,:]))
-    
-# Outdoor use 
-total_outdoor = 0
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-for row in range(practice_df.iloc[:,0].size):
-    axs.scatter(np.arange(12)+1,monthly_use_arr[row,:]-min(monthly_use_arr[row,:])) #, label = 'Imports', color = 'blue')
-    total_outdoor += np.sum(monthly_use_arr[row,:]-min(monthly_use_arr[row,:]))
-
-
-# Compare Artes annual demand to more recent annual demand (2017-2021)
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-axs.scatter(np.arange(len(annual_comparison.Provider))+1, -100*(annual_comparison.artes_avg - annual_comparison.recent_avg)/ \
-           annual_comparison.artes_avg) 
-axs.yaxis.set_major_locator(MultipleLocator(20))
-axs.yaxis.set_minor_locator(MultipleLocator(10))
-#axs.plot()
-plt.grid(which = 'both', axis = 'y')
-    
-
-
-
