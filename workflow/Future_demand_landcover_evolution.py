@@ -7,14 +7,14 @@ import matplotlib.pyplot as plt
 
 #%% 
 
-SSP = "SSP5" # 'SSP3' or 'SSP5'  
+SSP = "SSP5" # change to 'SSP3' or 'SSP5'  
 scenario = "med" # change to "low" , "med", or "hi"
 
 # Create master dataframes to store projected demands for all providers. These empty 
 # dataframes will be iteratively appended by the provider-specific water demand
 # projection dataframes.
 
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Recreate_my_Experiment_Steps/Step_4") # Path to Step 4 Folder 
+os.chdir("") # Path to Step 4 Folder 
 
 columns = ['ID', '2010','2020','2030','2040','2050','2060','2070','2080','2090','2100', 'Initial_Weighted_LC', 'Final_Weighted_LC']
 master_indoor_future_annual = pd.DataFrame(columns = columns)
@@ -312,7 +312,7 @@ master_indoor_future_annual = master_indoor_future_annual.copy()
 indoor_baseline = pd.DataFrame(data = baseline_indoor_monthly, index = provider_ids)
 indoor_baseline.to_csv("indoor_baseline.csv")
 
-#master_demand_sensitivity_2100_attributes.to_csv("demand_sensitivity_2100_attributes_" + SSP + "_" + scenario + ".csv", index = False)
+#master_demand_sensitivity_2100_attributes.to_csv("demand_sensitivity_2100_attributes_" + SSP + "_" + scenario + ".csv", index = False) # uncomment to output demand sensitivity csv used for Figure 8 
 master_indoor_future_annual.to_csv('Provider_projection_indoor_' + SSP + '_' + scenario + '.csv')
 master_outdoor_future_annual.to_csv('Provider_projection_outdoor_' + SSP + '_' + scenario + '.csv')
 master_indoor_future_monthly.to_csv('Provider_projection_indoor_monthly_' + SSP + '_' + scenario + '.csv')
