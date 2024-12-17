@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 11 14:23:31 2023
-
-@author: fere556
-"""
 
 import os 
 import numpy as np
@@ -11,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
-os.chdir('C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_Paper/Provider_Historical_Demands')
+os.chdir('Path to necessary input files')
 
 monthly_data = pd.read_csv('Artes_node_monthly_delivery_data_CA_database.csv', 
                            thousands = ',')
@@ -53,7 +48,6 @@ for row in range(monthly_data.iloc[:,0].size):
 # Create DataFrame for monthly supply data for each provider 
 
 # Iterate through each provider name
-# Only use data from 2017 to 2021
 # Aggregate data by month into a list (months in spreadsheet are numeric)
 
 practice_df = pd.DataFrame(data = None, columns = ['Provider','Jan','Feb', 'Mar', 'Apr',
@@ -169,19 +163,6 @@ for i in range(len(Providers)):
         
 plt.tight_layout()
 
-# count = 0
-# fig, axs = plt.subplots(nrows=8, ncols=7, figsize=(12, 12))
-# rows = np.sort(np.tile(np.arange(8),7))
-# cols = np.tile(np.arange(7),8)
-# for i in range(len(Providers)):
-#     if min(annual_arr[i,:])/max(annual_arr[i,:]) < .7:
-#         continue 
-#     else:
-#         axs[rows[count], cols[count]].plot(np.arange(7)+2015, annual_arr[i,:], alpha = 0.5, c = 'r')
-#         axs[rows[count], cols[count]].scatter(np.arange(7)+2015, annual_arr[i,:], alpha = 0.5, c = 'r')
-#         count += 1
-
-# plt.tight_layout()
         
 #%% Generate new Demands table for Artes 
 
@@ -213,7 +194,7 @@ demands.insert(loc = 0, column = 'ID', value = node_IDs)
 # "Future_demand_landcover_evolution.py"
 
 root_IDs = demand_update_table.Demand_Root.unique()
-updated_demand_data = monthly_demands_updated_min # choose min, max, or avg
+updated_demand_data = monthly_demands_updated_min # choose min or max
 
 for root_ID in root_IDs:
     
@@ -272,7 +253,7 @@ for root_ID in root_IDs:
         
         continue 
     
-demands.to_csv('Provider_historical_demands_min.csv') # modify file name for demand scenario (min, max, avg)
+demands.to_csv('Provider_historical_demands_min.csv') # modify file name for demand scenario (min or max specificed in line 197)
     
     
 #%% Create DataFrame to compare recent annual average supply (2017-2021) to 
