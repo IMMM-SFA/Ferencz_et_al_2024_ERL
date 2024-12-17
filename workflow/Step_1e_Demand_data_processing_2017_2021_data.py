@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 11 14:23:31 2023
-
-@author: fere556
-"""
 
 import os 
 import numpy as np
@@ -11,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
-os.chdir('C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Artes_redevelopment/Demand_updates/')
+os.chdir('Path to input files provided on MSDLive Step 1e')
 
 monthly_data = pd.read_csv('Artes_node_monthly_delivery_data_CA_database.csv', 
                            thousands = ',')
@@ -196,128 +191,4 @@ for root_ID in root_IDs:
         
         continue 
     
-
-    
-#%% Import links table, any demand node that is deleted from the demands 
-#   table should be deleted from the links table that is exported and saved
-#   for an Artes simulation
-
-# Import links data 
-
-os.chdir('C:/Users/fere556/Documents/Artes/Artes_redevelopment/Topology_updates/')
-links_updated = pd.read_csv('Links_updated.csv')
-
-# Remove flagged nodes from demands DataFrame and remove all instances 
-# of those nodes from links table
-
-for i in range(len(demand_update_table.iloc[:,0])):
-    if demand_update_table.Consider_Deleting[i] == 1:
-        node = demand_update_table.iloc[i,0]
-        demand_update_table.iloc[i,:] = np.nan
-        demands.iloc[i,:] = np.nan
-        for j in range(len(links_updated.iloc[:,0])):
-            if links_updated.iloc[j,0] == node or links_updated.iloc[j,1] == node:
-                links_updated.iloc[j,:] = np.nan
-
-# Filter out transfer links for now 
-for j in range(len(links_updated.iloc[:,0])):
-    if links_updated.iloc[j,3] == 'Transfers':
-        links_updated.iloc[j,:] = np.nan
-
-# Remove nan rows from demands and links
-#........
-
-
-
-# # Get list of remaining storage nodes and their max storage volumes
-# pd.read_csv('Artes_Storage.csv')
-
-# # Get list of WWTPs and populate with monthly intake capacities 
-# pd.read_csv('Artes_WRPs.csv')
-
-# # Get list of WWTPs and their reuse capacities 
-# pd.read_csv('Artes_WRP_resuse_capacity.csv')
-
-# # List of connections between WWTP reuse and all recieving nodes 
-# #........
-
-# # Get list of groundwater basins and their annual pumping limits 
-# pd.read_csv('Artes_GWBs.csv')
-
-# # Get list of spreading basins and their monthly recharge limits
-# pd.read_csv('Artes_SPGs.csv')
-
-# # inflows for all remaining demand nodes, assign surface flows from Artes 
-# # import inflows table and assign Artes inflows to remaining nodes 
-# pd.read_csv('Artes_inflows.csv')
-
-# Save newly created batch of input files 
-
-        
-#%% Create DataFrame to compare recent annual average supply (2017-2021) to 
-# annual average supply used in Artes (2010) 
-annual_comparison = pd.DataFrame(data = None, columns = ['Provider', 'recent_avg',
-                            'artes_avg'])
-
-annual_comparison.Provider = Providers
-annual_comparison.recent_avg = annual_avg_arr
-
-for i in range(len(Providers)):
-    provider = annual_comparison.Provider[i] 
-    artes_copy = artes_annual_data.copy()
-    artes_copy = artes_copy.where(artes_copy.Ca_database_name[:] == provider)
-    artes_copy = artes_copy.dropna(thresh = 6)
-    annual_comparison.iloc[i,2] = artes_copy.iloc[0,5]
-
-np.sum(annual_comparison.artes_avg[:])
-np.sum(annual_comparison.recent_avg[:])
-    
-#%% Plotting 
-
-# Monthly use factors 
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-for row in range(practice_df.iloc[:,0].size):
-    axs.plot(np.arange(12)+1, monthly_use_arr[row,:]/annual_avg_arr[row]) #, label = 'Imports', color = 'blue')
-
-# Monthly use factors 
-row = 16
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-axs.plot(np.arange(12)+1,  monthly_use_arr[row,:]/annual_avg_arr[row]) 
-
-# Relative monthly useage
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-for row in range(practice_df.iloc[:,0].size):
-    axs.plot(np.arange(12)+1, monthly_use_arr[row,:]/min(monthly_use_arr[row,:])) 
-    
-# Relative monthly useage
-row = 16
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-axs.plot(np.arange(12)+1, monthly_use_arr[row,:]/min(monthly_use_arr[row,:])) 
-
-# Indoor use 
-total_indoor = 0 
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-for row in range(practice_df.iloc[:,0].size):
-    axs.scatter(1,min(monthly_use_arr[row,:])) #, label = 'Imports', color = 'blue')
-    total_indoor += np.sum(12*min(monthly_use_arr[row,:]))
-    
-# Outdoor use 
-total_outdoor = 0
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-for row in range(practice_df.iloc[:,0].size):
-    axs.scatter(np.arange(12)+1,monthly_use_arr[row,:]-min(monthly_use_arr[row,:])) #, label = 'Imports', color = 'blue')
-    total_outdoor += np.sum(monthly_use_arr[row,:]-min(monthly_use_arr[row,:]))
-
-
-# Compare Artes annual demand to more recent annual demand (2017-2021)
-fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(6, 4))
-axs.scatter(np.arange(len(annual_comparison.Provider))+1, -100*(annual_comparison.artes_avg - annual_comparison.recent_avg)/ \
-           annual_comparison.artes_avg) 
-axs.yaxis.set_major_locator(MultipleLocator(20))
-axs.yaxis.set_minor_locator(MultipleLocator(10))
-#axs.plot()
-plt.grid(which = 'both', axis = 'y')
-    
-
-
-
+demands.to_csv('Provider_historical_demands.csv') # save recent average demands 
