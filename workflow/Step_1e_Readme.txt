@@ -1,5 +1,6 @@
 Python scripts 'Demand_data_processing_2017_2021_data.py'and'Demand_data_processing_2014_2021_data.py'generate 
-monthly average, minimum, and maximum water demands for each water provider within the study region. 
+monthly average, minimum, and maximum water demands for each water provider within the study region. Modify 
+Line 197 for the 2014_2021 script to specify 'min' or 'max' monthly outputs. 
 The input data is the California Water Resources Control Board monthly water provider supply data (Input Data Reference 3). 
 The data is in 'Artes_node_monthly_delivery_data_CA_database.csv'
 The script outputs recent (2017-2021) monthly average water demand for water providers in the file `Provider_historical_demands.csv' and 
