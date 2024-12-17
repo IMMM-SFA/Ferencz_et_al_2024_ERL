@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
-os.chdir('Path to necessary input files')
+os.chdir(Path to Step 1e Folder)
 
 monthly_data = pd.read_csv('Artes_node_monthly_delivery_data_CA_database.csv', 
                            thousands = ',')
