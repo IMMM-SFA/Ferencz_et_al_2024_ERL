@@ -82,4 +82,5 @@ Standard Python Packages along with the Rasterio (https://rasterio.readthedocs.i
 - Figure 4. Outputs from **Step 4** and **Step 1c**. `Figure_4_and_5_urban_LC_areas.py` & Figure_4_and_5_water_demand_plotting.py`. Bar plot outputs formatted in Powerpoint. Outputs from the plotting scripts formatted in Powerpoint. 
 - Figure 5. Outputs from **Step 4** and **Step 1c**. `Figure_4_and_5_urban_LC_areas.py` & Figure_4_and_5_water_demand_plotting.py`. Bar plot outputs formatted in Powerpoint. Outputs from the plotting scripts formatted in Powerpoint.
 - Figure 6. Outputs from **Step 4**. `Figure_6.py`. Outputs from the plotting scripts formatted in Powerpoint.
-- Figure 7. Outputs from **Step 4**. `Figure_7.py`. 
+- Figure 7. Outputs from **Step 4**. `Figure_7.py`.
+- Figure 8. Outputs from **Step 4**. `Figure_8.py`. 
