@@ -14,7 +14,7 @@ scenario = "hi" # change to "low" , "med", or "hi"
 # dataframes will be iteratively appended by the provider-specific water demand
 # projection dataframes.
 
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Recreate_my_Experiment_Steps/Step_4") # Path to Step 4 Folder 
+os.chdir("") # Path to Step 4 Folder 
 
 columns = ['ID', '2010','2020','2030','2040','2050','2060','2070','2080','2090','2100', 'Initial_Weighted_LC', 'Final_Weighted_LC']
 master_indoor_future_annual = pd.DataFrame(columns = columns)
