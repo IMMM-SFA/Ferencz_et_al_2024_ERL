@@ -106,7 +106,9 @@ raster_difference = np.where(raster_difference > -2, raster_difference, 100)
 
 
 # Register GDAL format drivers and configuration options with a
-# context manager.
+# context manager. Modify file name in line 123 to match SSP and low, med, hi scenario
+# Prefix 'Urban_intensification' or 'Urban_growth' to indicate which raster change analysis 
+# was performed, e.g., Urban_growth_SSP5_hi.tif or  Urban_intensification_SSP5_hi.tif. 
 with rasterio.Env():
 
     # Write an array as a raster band to a new 8-bit file. For
