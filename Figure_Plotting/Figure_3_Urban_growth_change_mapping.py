@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Apr 27 10:23:50 2023
-
-@author: fere556
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib as mpl
@@ -18,7 +12,7 @@ from rasterio.mask import mask
 from rasterio.plot import show
 
 # Path to Step 3 Folder
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Demand_Paper_Figures/Urban_Raster_Change_Maps")
+os.chdir("")
 
 # Import service regions boundaries 
 service_bnds = geopandas.read_file("Artes_service_regions_updated.shp")  
@@ -28,21 +22,16 @@ service_bnds = service_bnds.dropna(thresh = 3)
 service_bnds = service_bnds.reset_index(drop = True)
 service_ids = service_bnds.Artes_serv
 
-# Plot Service regions
-# fig, ax = plt.subplots(figsize = (10,10))
-# service_bnds.plot(column = service_bnds.Artes_se_3 , figsize=(10, 10), ax = ax, 
-#                   color = 'gold', edgecolor = 'black')
-# cx.add_basemap(ax)
-
 #%% Difference rasters to determine urban cells whose urban land class changed (urban conversion = intensification)
+#   Run this code block to generate exisiting urban land change rasters 
 
 # Import urban landclass rasters
         
 # Visualize clipped region 
-raster_2100 = rasterio.open("SSP5_hi_2100.tif")
-raster_2010 = rasterio.open("SSP5_hi_2010.tif")
-# show(raster_2100)
-# show(raster_2010)
+raster_2100 = rasterio.open("SSP5_hi_2100.tif") # choose SSP3_med or SSP5_(low, med, or hi) 
+raster_2010 = rasterio.open("SSP5_hi_2010.tif") # choose SSP3_med or SSP5_(low, med, or hi) 
+# show(raster_2100) # to visualize
+# show(raster_2010) # to visualize
 
 # Filter for urban landclass values (band values 21 to 24)
 raster_2100_array = raster_2100.read()
@@ -70,7 +59,7 @@ plt.imshow(raster_difference[0,:,:], interpolation='none', cmap = current_cmap, 
 plt.colorbar()
 
 #%% New Urban land (urban growth)
-
+#   Run this code block to generate new urban land growth rasters
 
 # Filter for urban landclass values (band values 21 to 24)
 # Urban cells at ending year indicated by binary 1 or nan
@@ -108,7 +97,7 @@ plt.imshow(raster_difference[0,:,:], interpolation='none', cmap = current_cmap, 
 plt.colorbar()
 
 
-#%% 
+#%% Run this code block to save output of either code block (urban change or urban growth)
 
 # Save array ("raster_difference") as a raster 
 
