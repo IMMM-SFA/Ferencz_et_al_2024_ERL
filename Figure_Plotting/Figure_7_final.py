@@ -5,9 +5,7 @@ import os
 import matplotlib.pyplot as plt
 
 
-# Import SSP + zoning scenario (Output from Future_demand_landcover_evolution_Demand_Paper_version_for_Repo.py)
-
-#os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Demand_Projection") # Path to aggregated LC projection data 
+# Import SSP + zoning scenario 
 os.chdir("Step 4 Folder Path")
 SSP = "SSP5" # 'SSP3' or 'SSP5'  
 scenario = "hi" # change to "low" , "med", or "hi"
@@ -96,9 +94,3 @@ plt.xlim([0, 150]) # For SSP5
 # plt.xlim([-100, 0]) # For SSP3
 plt.ylabel('% change in demand')
 plt.xlabel('% change in population')
-
-
-
-
-
-
