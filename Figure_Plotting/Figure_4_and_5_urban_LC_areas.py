@@ -12,7 +12,7 @@ SSP = "SSP5" # SSP3 or SSP5
 scenario = 'med'
 
 # Import urban growth projection for specific SSP scenario - Step 1c
-os.chdir(Path to Step 1c Folder + SSP) # insert path to Step 1c folder, plus SSP name to navigate to the correct subfolder 
+os.chdir(Path to Step 1c Folder/SSP subfolder) # insert path to Step 1c folder and correct subfolder 
 
 LU_df = pd.read_csv(SSP + "_Aggregated_landclass_projection_data.csv", index_col = 0)
 
