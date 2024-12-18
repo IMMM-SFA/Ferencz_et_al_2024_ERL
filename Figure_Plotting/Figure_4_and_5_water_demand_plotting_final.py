@@ -6,13 +6,15 @@ import os
 import matplotlib.pyplot as plt
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Paper_Figures/Figure_4_5_Monthly_and_Annual_Demands_in_2100")
+os.chdir(Path to Figure 4 & 5 folder)
 
 # Historic use is from Step 1e and the version used for this is output from Step 4 
 Historic_use = pd.read_csv("Historical_use_2017_2021.csv")
 
 # These values were aggregated to all providers (total for LAC) using the outputs from Step 4 
 Projected_use = pd.read_csv("Figure_4_data_total_LA_providers_updated_with_min_max.csv")
+
+os.chdir(Path to Step 4 folder)
 
 # These are demand projections from Step 4
 Indoor_2100_ssp3_med = pd.read_csv("Indoor_2100_SSP3_med.csv")
