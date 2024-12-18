@@ -324,7 +324,9 @@ master_outdoor_future_monthly.to_csv('Provider_projection_outdoor_monthly_' + hi
 # monthly_irrigation_depths.to_csv('Provider_outdoor_properties_.csv') # only needs to be output once 
 # historical_use_master.to_csv('Historical_use_master.csv') # only needs to be output once 
 
-#%% 
+#%% Reformats monthly and annual projection data to generate indoor and outdoor monthly projections for specified decade for the SSP, intensification, and min or max scenario
+#   For Figure 4 and 5 this was done for 2010 and 2100. 2010 is used as the 2020 baseline as the SSP population and starting urban landclass from the 
+#   urban landclass projections is very close to LA for 2017-2021. The 2020 SSP and urban growth are already divergent from actual conditions circa 2020.
 
 indoor_monthly = pd.DataFrame(data = np.zeros((83, 16)),columns = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep', 
                                                                           'Oct', 'Nov', 'Dec', 'Annual', 'Initial_LC', 'Final_LC', 'Pop'])
@@ -336,11 +338,10 @@ for i in range(len(providers_with_projections)):
     if providers_with_projections[i] == 'CTY_VER' or providers_with_projections[i] ==  'IRR_SMT':
         providers_with_projections.pop(i)
  
-pop_historical = pd.read_csv("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Artes_redevelopment/Demand_updates/Provider_historical_population.csv")
+pop_historical = pd.read_csv(Provider_historical_population.csv")
 pop_historical['ssp_2010'] = np.zeros(len(pop_historical))
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Paper_Figures/Figure_4_5_Monthly_and_Annual_Demands_in_2100")
 
-# Column = 1 for 2020, Column = 10 for 2100 
+# Column = 1 for 2020 baseline, Column = 10 for 2100 
 column = 1
 year = "2010"
 for i in range(len(providers_with_projections)):
