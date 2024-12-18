@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jun  4 17:42:42 2024
-
-@author: fere556
-"""
 import numpy as np
 import pandas as pd
 import os 
@@ -13,7 +8,7 @@ import matplotlib.pyplot as plt
 # Import SSP + zoning scenario (Output from Future_demand_landcover_evolution_Demand_Paper_version_for_Repo.py)
 
 #os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Demand_Projection") # Path to aggregated LC projection data 
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Recreate_my_Experiment_Steps/Step_4")
+os.chdir("Step 4 Folder Path")
 SSP = "SSP5" # 'SSP3' or 'SSP5'  
 scenario = "hi" # change to "low" , "med", or "hi"
 
@@ -33,8 +28,8 @@ columns = ['ID', 'Pop_2010', 'Pop_2100', 'Outdoor_2010', 'Outdoor_2100', 'Outdoo
            'shrub_frac', 'Final_Weighted_LC']
 
 master_demand_sensitivity = pd.DataFrame(columns = columns)
-climate = False
-climate_effect = 0.16
+climate = False # False for analysis presented in paper 
+climate_effect = 0.16 # outdoor demand multiplier for imposed climate effect 
 
 for n in range(len(outdoor_demand_proj.iloc[:,0])):
     provider = outdoor_demand_proj.iloc[n,0]
