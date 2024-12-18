@@ -10,8 +10,11 @@ import matplotlib.pyplot as plt
 
 #%% Import datasets 
 
-os.chdir("C:/Users/fere556/OneDrive - PNNL/Documents/Artes/Demand_paper/Paper_Figures/Figure_8_Demand_Sensitivity")
+os.chdir(Path to Step 4 folder)
 
+### Skip to line 157 to plot Figure 8 
+
+## Figure 8 analysis of Demand projection outputs 
 SSP = 5 # choose SSP3 or SSP5
 intensification = 'hi' # choose low, med, or hi
 
