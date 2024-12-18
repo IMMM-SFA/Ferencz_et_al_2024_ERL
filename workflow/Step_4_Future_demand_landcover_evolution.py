@@ -319,3 +319,59 @@ master_indoor_future_monthly.to_csv('Provider_projection_indoor_monthly_' + SSP 
 master_outdoor_future_monthly.to_csv('Provider_projection_outdoor_monthly_' + SSP + '_' + scenario + '.csv')
 monthly_irrigation_depths.to_csv('Provider_outdoor_properties_.csv') # only needs to be output once 
 historical_use_master.to_csv('Historical_use_master.csv') # only needs to be output once 
+
+#%% Reformats to generate indoor and outdoor monthly projections for specified decade for the SSP, intensification, and min or max scenario
+#   For Figure 4 and 5 this was done for 2010 and 2100. 2010 is the baseline as the population and starting urban landclass is very close to 
+#   LA for 2017-2021. 
+
+indoor_monthly = pd.DataFrame(data = np.zeros((83, 16)),columns = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep', 
+                                                                          'Oct', 'Nov', 'Dec', 'Annual', 'Initial_LC', 'Final_LC', 'Pop'])
+outdoor_monthly = pd.DataFrame(data = np.zeros((83, 16)), columns = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep', 
+                                                                          'Oct', 'Nov', 'Dec', 'Annual', 'Initial_LC', 'Final_LC', 'Pop'])
+
+providers_with_projections = list(master_outdoor_future_annual.ID.unique())
+for i in range(len(providers_with_projections)):
+    if providers_with_projections[i] == 'CTY_VER' or providers_with_projections[i] ==  'IRR_SMT':
+        providers_with_projections.pop(i)
+ 
+pop_historical['ssp_2010'] = np.zeros(len(pop_historical))
+
+# Column = 1 for 2020 baseline, Column = 10 for 2100 
+column = 1
+year = "2010"
+for i in range(len(providers_with_projections)):
+    
+    provider_indoor_projections_monthly = master_indoor_future_monthly.where(master_indoor_future_monthly.ID == providers_with_projections[i])
+    provider_indoor_projections_monthly = provider_indoor_projections_monthly.dropna(thresh = 2)
+    provider_outdoor_projections_monthly = master_outdoor_future_monthly.where(master_outdoor_future_monthly.ID == providers_with_projections[i])
+    provider_outdoor_projections_monthly = provider_outdoor_projections_monthly.dropna(thresh = 2)
+    
+    provider_indoor_projections_annual = master_indoor_future_annual.where(master_indoor_future_annual.ID == providers_with_projections[i])
+    provider_indoor_projections_annual = provider_indoor_projections_annual.dropna(thresh = 1)
+    provider_outdoor_projections_annual = master_outdoor_future_annual.where(master_outdoor_future_annual.ID == providers_with_projections[i])
+    provider_outdoor_projections_annual = provider_indoor_projections_annual.dropna(thresh = 1)
+    
+    pop = pop_ssp.where(pop_ssp.iloc[:,0] == providers_with_projections[i])
+    pop = pop.dropna(thresh = 1)
+    
+    indoor_monthly.iloc[i, 0:12] = provider_indoor_projections_monthly.iloc[:, column]
+    indoor_monthly.iloc[i, 12] = np.sum(provider_indoor_projections_monthly.iloc[:, column])
+    LC_values = provider_indoor_projections_annual.iloc[:,11:].values
+    indoor_monthly.iloc[i, 13:15] = LC_values.astype('float')
+    indoor_monthly.iloc[i, 15] = pop.iloc[0,column]
+
+    outdoor_monthly.iloc[i, 0:12] = provider_outdoor_projections_monthly.iloc[:, column]
+    outdoor_monthly.iloc[i, 12] = np.sum(provider_outdoor_projections_monthly.iloc[:, column])
+    LC_values = provider_outdoor_projections_annual.iloc[:,11:].values
+    outdoor_monthly.iloc[i, 13:15] = LC_values.astype('float')
+    outdoor_monthly.iloc[i, 15] = pop.iloc[0,column]
+    
+    if providers_with_projections[i] in list(pop_historical.Artes_ID[:]):
+        ssp_pop_2010 = pop_historical.where(pop_historical.Artes_ID[:] == providers_with_projections[i]).dropna(thresh = 2)
+        pop_historical.iloc[ssp_pop_2010.index[0], 3] = pop.iloc[0,1]
+        
+indoor_monthly.insert(0, 'ID', providers_with_projections)
+outdoor_monthly.insert(0, 'ID', providers_with_projections)
+
+indoor_monthly.to_csv("Indoor_" + year + "_" + SSP + "_" + scenario + ".csv")
+outdoor_monthly.to_csv("Outdoor_" + year + "_" + SSP + "_" + scenario + ".csv")
