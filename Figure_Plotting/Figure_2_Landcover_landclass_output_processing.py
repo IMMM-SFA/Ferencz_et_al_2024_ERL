@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-os.chdir(Path to Step 2 Folder) # path to Step 2 folder or Figure 2 Folder 
+os.chdir(Path to Step 2 Folder) # path to Step 2 folder 
 
 landclass_area = pd.read_csv('landclass_area_providers.csv', index_col = 0)
 landcover_area = pd.read_csv('landcover_area_providers.csv', index_col = 0)
