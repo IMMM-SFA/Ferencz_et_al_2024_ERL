@@ -10,3 +10,5 @@ Outputs for each SSP (3 or 5) and zoning scenario (low, med, hi) and min, max, o
 -Provider outdoor properties (the same for all cases, only needs to be output once)
 -Provider historical demands (the same for all cases, only needs to be output once)
 -Demand sensitivity metrics used for the analysis in Figure 8 (only needs to be output for the average scenarios as these are only considered for Figure 8)
+-Reformatted monthly demands used for Figures 4 and 5. These have the format Indoor(or Outdoor)_YYYY_SSPX_zoningScenario (e.g., Indoor_2100_SSP3_med) for the average 
+monthly demand scenario and Indoor(or Outdoor)_2100_SSPX_demandScenario_zoningScenario_pop for the min and max demand scenarios (e.g., Indoor_2010_SSP5_min_med_with_pop)
